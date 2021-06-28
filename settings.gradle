@@ -1,0 +1,3 @@
+rootProject.name = "iTunes Finder"
+include ':app'
+include ':presentation'
