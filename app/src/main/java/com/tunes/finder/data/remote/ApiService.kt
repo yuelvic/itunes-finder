@@ -13,4 +13,11 @@ interface ApiService {
         @Query("country") country: String? = "ph"
     ): Media
 
+    @GET("/lookup")
+    suspend fun lookup(
+        @Query("id") id: Long,
+        @Query("media") media: String? = "music",
+        @Query("country") country: String? = "ph"
+    ): Media
+
 }

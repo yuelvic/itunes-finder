@@ -10,4 +10,8 @@ class SearchRepositoryImpl(private val apiService: ApiService) : SearchRepositor
         return apiService.search(term = term)
     }
 
+    override suspend fun lookup(id: Long): Media {
+        return apiService.lookup(id = id)
+    }
+
 }

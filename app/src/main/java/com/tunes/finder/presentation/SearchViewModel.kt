@@ -5,11 +5,15 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.tunes.finder.domain.model.ApiError
 import com.tunes.finder.domain.model.Media
+import com.tunes.finder.domain.usecase.LookupUseCase
 import com.tunes.finder.domain.usecase.SearchUseCase
 import com.tunes.finder.domain.usecase.base.UseCaseResponse
 import kotlinx.coroutines.cancel
 
-class SearchViewModel constructor(private val searchUseCase: SearchUseCase) : ViewModel() {
+class SearchViewModel constructor(
+    private val searchUseCase: SearchUseCase,
+    private val lookupUseCase: LookupUseCase
+) : ViewModel() {
 
     val showProgressBar = MutableLiveData<Boolean>()
     val searchResultData = MutableLiveData<Media>()
@@ -18,6 +22,21 @@ class SearchViewModel constructor(private val searchUseCase: SearchUseCase) : Vi
     fun search(term: String) {
         showProgressBar.value = true
         searchUseCase.invoke(viewModelScope, term, object : UseCaseResponse<Media> {
+            override fun onSuccess(result: Media) {
+                searchResultData.value = result
+                showProgressBar.value = false
+            }
+
+            override fun onError(apiError: ApiError?) {
+                messageData.value = apiError?.getErrorMessage()
+                showProgressBar.value = false
+            }
+        })
+    }
+
+    fun lookup(id: Long) {
+        showProgressBar.value = true
+        lookupUseCase.invoke(viewModelScope, id, object : UseCaseResponse<Media> {
             override fun onSuccess(result: Media) {
                 searchResultData.value = result
                 showProgressBar.value = false

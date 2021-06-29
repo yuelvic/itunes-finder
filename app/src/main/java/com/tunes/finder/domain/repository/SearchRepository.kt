@@ -6,4 +6,6 @@ interface SearchRepository {
 
     suspend fun search(term: String): Media
 
+    suspend fun lookup(id: Long): Media
+
 }

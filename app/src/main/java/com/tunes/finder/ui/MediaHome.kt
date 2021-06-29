@@ -10,7 +10,10 @@ import com.tunes.finder.domain.model.Media
 import com.tunes.finder.presentation.SearchViewModel
 
 @Composable
-fun MediaList(searchViewModel: SearchViewModel) {
+fun MediaList(
+    searchViewModel: SearchViewModel,
+    navigateToDetailView: (Long) -> Unit
+) {
     val media = searchViewModel.searchResultData.observeAsState(Media(
         resultCount = 0,
         result = listOf()
@@ -19,7 +22,7 @@ fun MediaList(searchViewModel: SearchViewModel) {
         items(
             items = media.value!!.result,
             itemContent = {
-                MediumListItem(medium = it)
+                MediumListItem(medium = it, navigateToDetailView = navigateToDetailView)
             }
         )
     }

@@ -1,5 +1,6 @@
 package com.tunes.finder.ui
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -38,7 +39,9 @@ class MainActivity : ComponentActivity() {
                 Surface(color = MaterialTheme.colors.background) {
                     Column(modifier = Modifier.fillMaxWidth().fillMaxHeight()) {
                         Search(searchViewModel = searchViewModel)
-                        MediaList(searchViewModel = searchViewModel)
+                        MediaList(searchViewModel = searchViewModel) {
+                            startActivity(DetailActivity.newIntent(this@MainActivity, it))
+                        }
                     }
                 }
             }

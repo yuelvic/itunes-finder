@@ -19,7 +19,10 @@ import com.google.accompanist.coil.rememberCoilPainter
 import com.tunes.finder.domain.model.Medium
 
 @Composable
-fun MediumListItem(medium: Medium) {
+fun MediumListItem(
+    medium: Medium,
+    navigateToDetailView: (Long) -> Unit
+) {
     Card(
         modifier = Modifier
             .padding(8.dp)
@@ -27,7 +30,7 @@ fun MediumListItem(medium: Medium) {
         elevation = 2.dp,
         shape = RoundedCornerShape(corner = CornerSize(16.dp))
     ) {
-        Row(Modifier.clickable {  }) {
+        Row(Modifier.clickable { navigateToDetailView(medium.trackId) }) {
             AlbumImage(artworkUrl = medium.artworkUrl)
             Column(
                 modifier = Modifier
@@ -66,5 +69,5 @@ fun PreviewMediumItem() {
         trackPrice = 35,
         genre = "Rock",
         artworkUrl = "https://is2-ssl.mzstatic.com/image/thumb/Music113/v4/66/13/ed/6613ed6c-ed13-af24-a3ac-ffe37f512013/source/100x100bb.jpg"
-    ))
+    ), navigateToDetailView = {})
 }

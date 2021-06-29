@@ -6,6 +6,7 @@ import com.squareup.moshi.Moshi
 import com.tunes.finder.data.remote.ApiService
 import com.tunes.finder.data.repository.SearchRepositoryImpl
 import com.tunes.finder.domain.repository.SearchRepository
+import com.tunes.finder.domain.usecase.LookupUseCase
 import com.tunes.finder.domain.usecase.SearchUseCase
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -58,4 +59,8 @@ fun createSearchRepository(apiService: ApiService): SearchRepository {
 
 fun createSearchUseCase(searchRepository: SearchRepository) : SearchUseCase {
     return SearchUseCase(searchRepository)
+}
+
+fun createLookupUseCase(searchRepository: SearchRepository) : LookupUseCase {
+    return LookupUseCase(searchRepository)
 }
