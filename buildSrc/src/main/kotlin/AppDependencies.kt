@@ -18,34 +18,21 @@ object AppDependencies {
     val composeLivedata = "androidx.compose.runtime:runtime-livedata:${Versions.compose}"
     val composeActivity = "androidx.activity:activity-compose:${Versions.compose}"
     val composeTest = "androidx.compose.ui:ui-test-junit4:${Versions.compose}"
+    val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
+    val retrofitMoshi = "com.squareup.retrofit2:converter-moshi:${Versions.retrofit}"
+    val moshi = "com.squareup.moshi:moshi:${Versions.moshi}"
+    val moshiCodegen = "com.squareup.moshi:moshi-kotlin-codegen:${Versions.moshi}"
+    val okHttpInterceptor = "com.squareup.okhttp3:logging-interceptor:${Versions.okHttpInterceptor}"
+    val koin = "io.insert-koin:koin-core:${Versions.koin}"
+    val koinAndroid = "io.insert-koin:koin-android:${Versions.koin}"
+    val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutines}"
+    val coroutinesAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}"
+    val chucker = "com.github.chuckerteam.chucker:library:${Versions.chucker}"
+    val chuckerNoOp = "com.github.chuckerteam.chucker:library-no-op:${Versions.chucker}"
+    val coil = "com.google.accompanist:accompanist-coil:${Versions.coil}"
 
     //test libs
     val junit = "junit:junit:${Versions.junit}"
     val extJUnit = "androidx.test.ext:junit:${Versions.extJunit}"
     val espressoCore = "androidx.test.espresso:espresso-core:${Versions.espresso}"
-
-    //util functions for adding the different type dependencies from build.gradle file
-    fun DependencyHandler.kapt(list: List<String>) {
-        list.forEach { dependency ->
-            add("kapt", dependency)
-        }
-    }
-
-    fun DependencyHandler.implementation(list: List<String>) {
-        list.forEach { dependency ->
-            add("implementation", dependency)
-        }
-    }
-
-    fun DependencyHandler.androidTestImplementation(list: List<String>) {
-        list.forEach { dependency ->
-            add("androidTestImplementation", dependency)
-        }
-    }
-
-    fun DependencyHandler.testImplementation(list: List<String>) {
-        list.forEach { dependency ->
-            add("testImplementation", dependency)
-        }
-    }
 }

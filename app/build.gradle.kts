@@ -1,8 +1,9 @@
 plugins {
     id("com.android.application")
+    id("kotlin-android")
     kotlin("android")
     kotlin("android.extensions")
-    id("kotlin-android")
+    kotlin("kapt")
 }
 
 android {
@@ -74,6 +75,19 @@ dependencies {
     implementation(AppDependencies.composeMaterial)
     implementation(AppDependencies.composeLivedata)
     implementation(AppDependencies.composeActivity)
+    implementation(AppDependencies.okHttpInterceptor)
+    implementation(AppDependencies.koin)
+    implementation(AppDependencies.koinAndroid)
+    implementation(AppDependencies.coroutines)
+    implementation(AppDependencies.coroutinesAndroid)
+    implementation(AppDependencies.retrofit)
+    implementation(AppDependencies.retrofitMoshi)
+    implementation(AppDependencies.moshi)
+    kapt(AppDependencies.moshiCodegen)
+    debugImplementation(AppDependencies.chucker)
+    releaseImplementation(AppDependencies.chuckerNoOp)
+    implementation(AppDependencies.coil)
+
     //test libs
     testImplementation(AppDependencies.junit)
     androidTestImplementation(AppDependencies.extJUnit)
