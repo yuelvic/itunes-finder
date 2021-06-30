@@ -2,6 +2,7 @@ package com.tunes.finder
 
 import android.app.Application
 import com.tunes.finder.di.AppModule
+import com.tunes.finder.di.CacheModule
 import com.tunes.finder.di.NetworkModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
@@ -15,7 +16,7 @@ class MainApplication : Application() {
         startKoin {
             androidLogger(Level.DEBUG)
             androidContext(this@MainApplication)
-            modules(listOf(AppModule, NetworkModule))
+            modules(listOf(AppModule, NetworkModule, CacheModule))
         }
     }
 

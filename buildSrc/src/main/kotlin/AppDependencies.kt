@@ -30,6 +30,9 @@ object AppDependencies {
     val chucker = "com.github.chuckerteam.chucker:library:${Versions.chucker}"
     val chuckerNoOp = "com.github.chuckerteam.chucker:library-no-op:${Versions.chucker}"
     val coil = "com.google.accompanist:accompanist-coil:${Versions.coil}"
+    val room = "androidx.room:room-runtime:${Versions.room}"
+    val roomCompiler = "androidx.room:room-compiler:${Versions.room}"
+    val roomExt = "androidx.room:room-ktx:${Versions.room}"
 
     //test libs
     val junit = "junit:junit:${Versions.junit}"

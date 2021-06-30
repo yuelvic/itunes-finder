@@ -18,6 +18,7 @@ object Versions {
     val coroutines = "1.3.9"
     val chucker = "3.5.0"
     val coil = "0.12.0"
+    val room = "2.3.0"
 
     //test
     val junit = "4.13.2"

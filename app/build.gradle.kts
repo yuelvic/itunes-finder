@@ -94,6 +94,9 @@ dependencies {
     debugImplementation(AppDependencies.chucker)
     releaseImplementation(AppDependencies.chuckerNoOp)
     implementation(AppDependencies.coil)
+    implementation(AppDependencies.room)
+    kapt(AppDependencies.roomCompiler)
+    implementation(AppDependencies.roomExt)
 
     //test libs
     testImplementation(AppDependencies.junit)
