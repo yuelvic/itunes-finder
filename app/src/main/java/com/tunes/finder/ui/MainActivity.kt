@@ -1,6 +1,7 @@
 package com.tunes.finder.ui
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Column
@@ -50,9 +51,13 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
-        searchViewModel.apply {
+        with(searchViewModel) {
             getOpenTime()
             setOpenTime()
+
+            messageData.observe(this@MainActivity, {
+                Toast.makeText(this@MainActivity, it, Toast.LENGTH_SHORT).show()
+            })
         }
     }
 }
