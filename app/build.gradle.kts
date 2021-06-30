@@ -83,13 +83,6 @@ dependencies {
     implementation(AppDependencies.retrofit)
     implementation(AppDependencies.retrofitMoshi)
     implementation(AppDependencies.moshi)
-    implementation("com.google.android.material:material:1.3.0")
-    implementation("androidx.compose.ui:ui:${rootProject.extra["compose_version"]}")
-    implementation("androidx.compose.material:material:${rootProject.extra["compose_version"]}")
-    implementation("androidx.compose.ui:ui-tooling:${rootProject.extra["compose_version"]}")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.3.1")
-    implementation("androidx.activity:activity-compose:1.3.0-beta02")
-    androidTestImplementation("androidx.compose.ui:ui-test-junit4:${rootProject.extra["compose_version"]}")
     kapt(AppDependencies.moshiCodegen)
     debugImplementation(AppDependencies.chucker)
     releaseImplementation(AppDependencies.chuckerNoOp)
@@ -97,6 +90,7 @@ dependencies {
     implementation(AppDependencies.room)
     kapt(AppDependencies.roomCompiler)
     implementation(AppDependencies.roomExt)
+    implementation(AppDependencies.lifecycleKtx)
 
     //test libs
     testImplementation(AppDependencies.junit)
