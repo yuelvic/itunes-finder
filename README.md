@@ -24,3 +24,5 @@ The API is here: https://itunes.apple.com/search
 Android versions targeted:
 
 - Android 6.0 Marshmallow(API level 23) or higher
+
+- In order to build the project, Android Studio Arctic Fox must be installed. You can download it here: https://developer.android.com/studio/preview
