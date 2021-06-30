@@ -1,12 +1,10 @@
 package com.tunes.finder.ui
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme.typography
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -18,6 +16,7 @@ import androidx.compose.ui.unit.dp
 import com.google.accompanist.coil.rememberCoilPainter
 import com.tunes.finder.domain.model.Media
 import com.tunes.finder.presentation.SearchViewModel
+import com.tunes.finder.utils.TimeUtil
 
 @Composable
 fun DetailScreen(searchViewModel: SearchViewModel) {
@@ -25,26 +24,41 @@ fun DetailScreen(searchViewModel: SearchViewModel) {
         resultCount = 0,
         result = listOf()
     ))
-    Column(modifier = Modifier
-        .fillMaxHeight()
-        .fillMaxWidth()
-        .padding(16.dp)
+    if (media.value.resultCount <= 0) return
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .fillMaxHeight()
+            .padding(16.dp)
     ) {
-        Image(
-            painter = rememberCoilPainter(request = media.value.result[0].artworkUrl),
-            contentDescription = "",
-            modifier = Modifier
-                .fillMaxWidth()
-                .fillMaxHeight()
-                .clip(RoundedCornerShape(corner = CornerSize(16.dp)))
-        )
-        Text(text = media.value.result[0].trackName, style = typography.h6)
-        Text(text = media.value.result[0].artistName, style = typography.caption)
+        Row(modifier = Modifier
+            .fillMaxWidth()
+        ) {
+            Image(
+                painter = rememberCoilPainter(request = media.value.result.first().artworkUrl),
+                contentDescription = "",
+                modifier = Modifier
+                    .size(80.dp)
+                    .clip(RoundedCornerShape(corner = CornerSize(16.dp)))
+            )
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(8.dp)
+            ) {
+                Text(text = media.value.result.first().trackName, style = typography.h6)
+                Text(text = media.value.result.first().artistName, style = typography.caption)
+                Text(
+                    text = TimeUtil.toTrackLength(media.value.result.first().trackLength),
+                    style = typography.caption
+                )
+            }
+        }
+        Button(
+            modifier = Modifier.fillMaxWidth().padding(8.dp),
+            onClick = {  }
+        ) {
+            Text(text = "Buy ₱${media.value.result.first().trackPrice}.00")
+        }
     }
-}
-
-@Preview
-@Composable
-fun PreviewDetailScreen() {
-    
 }

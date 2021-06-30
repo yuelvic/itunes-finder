@@ -67,6 +67,7 @@ fun PreviewMediumItem() {
         artistName = "Unique Salonga",
         trackName = "Sino",
         trackPrice = 35,
+        trackLength = 160853,
         genre = "Rock",
         artworkUrl = "https://is2-ssl.mzstatic.com/image/thumb/Music113/v4/66/13/ed/6613ed6c-ed13-af24-a3ac-ffe37f512013/source/100x100bb.jpg"
     ), navigateToDetailView = {})

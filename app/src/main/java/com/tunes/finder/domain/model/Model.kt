@@ -19,5 +19,7 @@ data class Medium(
     var artworkUrl: String,
     var trackPrice: Int?,
     @Json(name = "primaryGenreName")
-    var genre: String
+    var genre: String,
+    @Json(name = "trackTimeMillis")
+    var trackLength: Long
 )
